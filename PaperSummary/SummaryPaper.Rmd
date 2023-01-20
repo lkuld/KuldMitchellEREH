@@ -3,7 +3,7 @@ title: "Market structure and creative cluster formation"
 subtitle: "The origins of urban clusters in German literature, 1700-1932"
 author: "Lukas Kuld and Sara Mitchell"
 date: "20 January 2023"
-output: html_document
+output: pdf_document
 bibliography: lit.bib  
 ---
 
@@ -22,6 +22,8 @@ We postulate two stylized stages in the economic framework of literary writing: 
 A writer's production function is assumed to be the same under both systems as the nature of literary writing did not change significantly over time (e.g., no observed increase in collaborative writing or automated writing). Therefore the basic mechanism for location preference is the same under both regimes: agglomeration forces on the one side, including  learning, matching with publishers, but also social aspects of co-location with other writers and artists, and, on the other side, a writer's need to draw an income, either directly from writing, from a non-literary day-job, journalistic/commercial writing, family wealth, or through a patron.
 
 Under the patronage system, agglomeration forces are countered by strong spatial competition. For instance, a local patron or university can only accommodate a limited number of authors. Therefore, authors mirror the distribution of potential patrons and non-literary related employment, in the case of 18th and 19th century Germany with little geographical concentration or clustering. 
+
+
 
 ```{r pressure, fig.dim = c(8, 4), echo=FALSE}
 load("blogPlot.Rdata")
