@@ -1,0 +1,58 @@
+---
+title: "Market structure and creative cluster formation"
+subtitle: "The origins of urban clusters in German literature, 1700-1932"
+author: "Lukas Kuld and Sara Mitchell"
+date: "20 January 2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Many studies observe two key patterns in the location of creative workers: the attraction of large cities and proximity to other creative workers. In a new paper, we trace the origin of urban creative clusters in biographical data on German literary authors. In particular, we look at where clusters are located over time and their dependence on the market structure in literary publishing and the labor market for literary writers.
+
+German authors provide an interesting empirical context to study market forces in a creative industry. First, German literature has a long history and an initially high degree of geographic dispersion. This allows us to observe a long-term concentration process in the location decision of authors. By comparison, Paris and London long dominated as a location for British and French authors (see, e.g., \citealp{mitchell2019}). Second, the creative process studied here, literary writing, is a primarily solitary activity without infrastructure requirements like concert halls or studios. Therefore, authors can react to changing economic conditions more easily. Last, during the time frame observed the labor market for German writers changed markedly. At the end of this period, writing could provide a sufficient income, while earlier writers often relied on some form of patronage.
+
+To study location decisions in this empirical setting, we have lifetime biographic, publication, and location data on 153 of the prominent writers associated with German literature from 1700 to 1932 (in total 8146 observations with a known location in Germany). We combine these with various datasets on the development and location of book publishing and trade, as well as on urban population, capitals, independent cities, and university cities. These detailed data and the long-time horizon allow us to study changes in the attraction of large cities, proximity to other writers, and ultimately the formation of literary clusters. Importantly, the yearly data allows us to distinguish moves at different career stages, which is indicative of the changing opportunities provided, for instance by a university town or capital city.
+
+We postulate two stylized stages in the economic framework of literary writing: a patronage-based labor market and a market dominated system. Up to the mid-19th century, most authors relied on some sort of patronage for their outcome, which often comes as a reward for literary success.  This included stipends but also positions as private tutors, noble courts, or at universities.  By the end of the 19th century, many more authors than before were able to draw a relevant part of their income from literary writing. In addition, some large cities developed employment opportunities adjunct to literary writing such as journalistic/commercial writing. 
+
+A writer's production function is assumed to be the same under both systems as the nature of literary writing did not change significantly over time (e.g., no observed increase in collaborative writing or automated writing). Therefore the basic mechanism for location preference is the same under both regimes: agglomeration forces on the one side, including  learning, matching with publishers, but also social aspects of co-location with other writers and artists, and, on the other side, a writer's need to draw an income, either directly from writing, from a non-literary day-job, journalistic/commercial writing, family wealth, or through a patron. Importantly, under the patronage system, the spatial competition aspect dominates. For instance, a local patron or university can only accommodate a limited number of authors.
+
+
+```{r pressure, fig.dim = c(8, 4), echo=FALSE}
+load("blogPlot.Rdata")
+library(ggplot2)
+library(gridExtra)
+
+p1 <- ggplot(plotData, aes(age, y_hat)) +
+  theme_bw() +
+  geom_line(aes(linetype=birth_cohort, color=birth_cohort),size=1.5)+
+  scale_color_grey(start=.8,end=.2) +
+  geom_errorbar(aes(ymin=lwr, ymax= upr,color=birth_cohort),size=.2,linetype="dotted") +
+  labs(y="# writers", linetype="Born", color="Born") +
+  theme(legend.position = "bottom") +
+  coord_cartesian(ylim=c(0,12), xlim=c(0,65)) 
+
+p2 <- ggplot(plotData2, aes(year, y_hat)) +
+  geom_errorbar(aes(ymin=lwr, ymax= upr),color="grey60",size=.2) +
+  geom_line(size=1.5)+
+  labs(y="# writers") +
+  theme_bw() 
+
+grid.arrange(p2, p1, ncol=2, top=ggpubr::text_grob("Fig. 1: Number of writers nearby over time and by age/cohort", size=14))
+```
+
+
+Our empirical findings are consistent with this stylized framework. We find that, over the 19th and early 20th century, authors become more likely to live in large political and economic centers. A second concentration process within cities led to half of all authors living in Berlin alone in 1932 (or 2/3 of those living inside Germany). The number of authors in Berlin, and to a lesser extent Munich, at the beginning of the 20th century is much higher than in earlier more short-lived clusters that relied on some form of patronage, such as Weimar. This concentration process is illustrated on the left side in Figure 1 where the estimated number of peers that live within 10km of a 30-year old author increases strongly over time, predominately a consequence of the number of authors in Berlin.
+
+Our main empirical finding, however, relates to the location choice of authors over the life-cycle. Not only do we observe fewer moves into literary clusters for earlier cohorts, 18th century authors moved into clusters and prestigious locations like political capitals late in their career. Therefore, employment in such a location can be seen as a reward for a successful literary career. In contrast, the last cohort moves to Berlin and Munich and other large cities during their twenties, before or around the time of their first literary publication. Figure 1 illustrates this life-cycle migration pattern on the right side by again looking at the number of nearby authors.
+
+Therefore, the late clusters in Berlin and Munich resemble the image of a modern creative cluster more closely. That is a thriving cultural scene that attracts young aspiring artists to live, work, and learn together. In contrast, the geographic distribution of early authors more closely  resembles that of modern-day university scientist who, by design, are spatially dispersed at different universities. This similarity is consistent with the spatial competition in the labor market of early authors relying on patrons (including universities) and the labor market of university based researchers.
+
+These findings add to the historical evidence on clusters and migration of artists, researchers, and philosophers. We can directly compare our results to evidence of the locations and overall migration levels of other groups of creative workers during the time given by \cite{Kelly2007} and \cite{hellmanzik2008} for visual artists, \cite{Borowiecki2013} for composers, \cite{haganWalsh2017} for philosophers, \cite{mitchell2019} and \cite{kuld2021manhattan} literary writers (both indirectly), and \cite{borowiecki2021} for all creative activity. These studies focus on the clustering of creative workers and show remarkable concentration in key locations.
+
+Methodologically, this paper complements large scale historical research on the locations of creative workers (with $n \gg 1000$, see for example, \citealp{schich2014network}, and \citealp{serafinelli2022creativity}) by providing a more complete picture of individual migration. We show, for instance, that the common empirical restriction to only observe birth and death locations can hide substantial geographic concentration due to life-cycle migration.
+
+These and other economic studies have shown the importance of institutions, political freedoms, and local autonomy in shaping urban environment and clusters of talent. Our findings suggest that these factors are not sufficient conditions for agglomeration of creative activity to occur. Market structure and economic incentives also play an important role in the shaping of creative clusters. We have seen some evidence for policies successfully creating clusters in Munich and Berlin given the right market conditions. On the other hand, policies to widen the geographic distribution, e.g., in university-based research, might mask advantages from clustering by prohibiting industry agglomeration.
