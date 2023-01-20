@@ -3,7 +3,7 @@ title: "Market structure and creative cluster formation"
 subtitle: "The origins of urban clusters in German literature, 1700-1932"
 author: "Lukas Kuld and Sara Mitchell"
 date: "20 January 2023"
-output: pdf_document
+output: html_document
 bibliography: lit.bib  
 ---
 
@@ -42,7 +42,7 @@ p2 <- ggplot(plotData2, aes(year, y_hat)) +
   labs(y="# writers") +
   theme_bw() 
 
-grid.arrange(p2, p1, ncol=2, top=ggpubr::text_grob("Fig. 1: Number of writers nearby over time and by age/cohort", size=14))
+grid.arrange(p2, p1, ncol=2, top=ggpubr::text_grob("Fig. 1: Number of writers within 10km over time and by age/cohort", size=14))
 ```
 
 
