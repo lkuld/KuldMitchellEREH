@@ -1,7 +1,7 @@
 ---
 title: "Market structure and creative cluster formation"
 subtitle: "The origins of urban clusters in German literature, 1700-1932"
-author: "Lukas Kuld and Sara Mitchell"
+author: "Lukas Kuld ^[University of Limerick, lkuld.github.io] and Sara Mitchell ^[University of Southern Denmark, sara-mitchell.com]"
 date: "20 January 2023"
 output: pdf_document
 bibliography: lit.bib  
